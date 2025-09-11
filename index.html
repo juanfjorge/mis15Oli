@@ -31,16 +31,19 @@
       height: 100vh; /* cada página ocupa toda la pantalla */
     }
 
-    .invitacion {
-      width: 400px;   
-      height: 650px;
-      margin: auto;
-      padding: 20px;
-      position: relative;
-      background: #F6F9FF;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+   .invitacion {
+  width: 90%;          /* ocupa casi toda la pantalla en móviles */
+  max-width: 400px;    /* pero nunca más grande de 400px en escritorio */
+  height: auto;        /* se adapta al contenido */
+  min-height: 90vh;    /* asegura que llene la pantalla */
+  margin: auto;
+  padding: 20px;
+  position: relative;
+  background: #F6F9FF;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
 
     .decor-top {
       position: absolute;
@@ -406,20 +409,26 @@
   </audio>
   
   <script>
-    const musica = document.getElementById("musica");
-  
-    function activarMusica() {
-      musica.muted = false;
-      musica.play();
-      document.removeEventListener("click", activarMusica);
-      document.removeEventListener("touchstart", activarMusica);
-      document.removeEventListener("scroll", activarMusica);
-    }
-  
-    document.addEventListener("click", activarMusica);
-    document.addEventListener("touchstart", activarMusica);
-    document.addEventListener("scroll", activarMusica);
-    
+  const musica = document.getElementById("musica");
+
+function activarMusica() {
+  musica.play().then(() => {
+    console.log("🎵 Música reproduciéndose");
+  }).catch(err => {
+    console.log("⛔ Autoplay bloqueado:", err);
+  });
+
+  // quitamos los listeners después de activar
+  document.removeEventListener("click", activarMusica);
+  document.removeEventListener("touchstart", activarMusica);
+  document.removeEventListener("scroll", activarMusica);
+}
+
+// se activa con cualquier interacción mínima
+document.addEventListener("click", activarMusica);
+document.addEventListener("touchstart", activarMusica);
+document.addEventListener("scroll", activarMusica);
+
   
 
 
