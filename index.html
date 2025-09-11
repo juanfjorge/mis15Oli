@@ -31,18 +31,17 @@
       height: 100vh; /* cada página ocupa toda la pantalla */
     }
 
-   .invitacion {
-  width: 90%;          /* ocupa casi toda la pantalla en móviles */
-  max-width: 400px;    /* pero nunca más grande de 400px en escritorio */
-  height: auto;        /* se adapta al contenido */
-  min-height: 90vh;    /* asegura que llene la pantalla */
+    .invitacion {
+  width: 400px;   
+  height: 650px;
   margin: auto;
-  padding: 20px;
+  padding: 60px 20px 20px 20px; /* 👈 antes tenías solo 20px, ahora arriba le damos 60px */
   position: relative;
   background: #F6F9FF;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
+
 
 
     .decor-top {
@@ -206,6 +205,16 @@
   
   section {
     overflow: hidden;
+  }
+
+/* Ajuste para móviles chicos */
+@media (max-width: 480px) {
+  .invitacion {
+    padding-top: 40px;   /* un poco menos que en PC */
+    width: 100%;         /* que ocupe todo el ancho */
+    height: 100vh;       /* que use toda la pantalla del móvil */
+    border-radius: 0;    /* sin bordes redondeados para que no quede raro */
+    box-shadow: none;    /* sin sombra para que parezca fullscreen */
   }
 
 }
@@ -410,24 +419,26 @@
   
   <script>
   const musica = document.getElementById("musica");
+  musica.volume = 1;   // aseguramos volumen
+  musica.muted = false;
 
-function activarMusica() {
-  musica.play().then(() => {
-    console.log("🎵 Música reproduciéndose");
-  }).catch(err => {
-    console.log("⛔ Autoplay bloqueado:", err);
-  });
+  function activarMusica() {
+    musica.play().then(() => {
+      console.log("🎵 Música reproduciéndose");
+    }).catch(err => {
+      console.log("⛔ Autoplay bloqueado:", err);
+    });
 
-  // quitamos los listeners después de activar
-  document.removeEventListener("click", activarMusica);
-  document.removeEventListener("touchstart", activarMusica);
-  document.removeEventListener("scroll", activarMusica);
-}
+    // quitamos los listeners después de activar
+    document.removeEventListener("click", activarMusica);
+    document.removeEventListener("touchstart", activarMusica);
+    document.removeEventListener("scroll", activarMusica);
+  }
 
-// se activa con cualquier interacción mínima
-document.addEventListener("click", activarMusica);
-document.addEventListener("touchstart", activarMusica);
-document.addEventListener("scroll", activarMusica);
+  // se activa con cualquier interacción mínima
+  document.addEventListener("click", activarMusica);
+  document.addEventListener("touchstart", activarMusica);
+  document.addEventListener("scroll", activarMusica);
 
   
 
