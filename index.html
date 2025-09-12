@@ -31,16 +31,21 @@
       height: 100vh; /* cada página ocupa toda la pantalla */
     }
 
-.invitacion {
-  width: 400px;   
-  height: 650px;
+    .invitacion {
+  width: 400px;
+  max-width: 95%;       /* ocupa casi todo el ancho en móviles */
+  min-height: 85vh;     /* ocupa casi toda la pantalla */
+  max-height: 95vh;     /* nunca se pasa de la pantalla */
   margin: auto;
-  padding: 60px 20px 20px 20px; /* 👈 antes tenías solo 20px, ahora arriba le damos 60px */
+  padding: 40px 20px 20px 20px;
   position: relative;
   background: #F6F9FF;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  overflow: hidden;     /* 👈 evita scroll dentro de la tarjeta */
+  box-sizing: border-box;
 }
+
 
 
 
@@ -177,8 +182,7 @@
   background: linear-gradient(90deg, #B8860B, #D4AF37); /* más oscuro al presionar */
   transform: scale(0.98); /* efecto de “hundido” */
 }
-/* -------- AJUSTES MÓVILES -------- */
-/* SOLO MÓVIL */
+/* Ajustes móviles generales */
 @media (max-width: 767px) {
   section {
     height: calc(var(--vh, 1vh) * 100);
@@ -186,39 +190,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .invitacion {
-    width: 100%;
-    height: calc(var(--vh, 1vh) * 100); /* altura exacta de la pantalla */
-    margin: 0;
-    border-radius: 0;   /* opcional */
-    box-shadow: none;   /* opcional */
-  }
-
-  body {
-    background: none;   /* no se ve el fondo del body */
-  }
-  body {
-    overflow-x: hidden;
-  }
-  
-  section {
     overflow: hidden;
   }
 
-}
-
-/* Ajuste para móviles chicos */
-@media (max-width: 480px) {
   .invitacion {
-    padding-top: 40px;   /* un poco menos que en PC */
-    width: 100%;         /* que ocupe todo el ancho */
-    height: 100vh;       /* que use toda la pantalla del móvil */
-    border-radius: 0;    /* sin bordes redondeados para que no quede raro */
-    box-shadow: none;    /* sin sombra para que parezca fullscreen */
+    width: 95%;              /* ocupa casi todo el ancho */
+    min-height: 85vh;        /* altura mínima de la tarjeta */
+    max-height: 95vh;        /* altura máxima para no pasar la pantalla */
+    margin: 0 auto;          /* centrado horizontal */
+    border-radius: 12px;     /* bordes suaves */
+    box-shadow: none;
+    padding-top: 50px;       /* para que no quede espacio en blanco arriba */
+    position: relative;      /* para mantener la posición de las decoraciones */
   }
 }
+
+/* Ajuste extra para móviles muy pequeños */
+@media (max-width: 480px) {
+  .invitacion {
+    min-height: 80vh;
+    max-height: 95vh;
+    padding-top: 40px;
+    width: 95%;
+  }
+}
+
 
   </style>
 </head>
@@ -230,7 +226,7 @@
       <h1 style="text-align:left; margin-left:20px; font-size: 3.2rem;">OLIVIA</h1>
       <div class="titulo" style="display:flex; align-items:center; justify-content:space-between;">
           <img src="assets/deco.png" alt="decoración" class="decor">
-          <span class="cursive" style="font-size: 3rem; margin-left: -150px;">Mis</span>
+          <span class="cursive" style="font-size: 3rem; margin-left: -120px;">Mis</span>
           <button id="boton-musica"
           style="background: linear-gradient(90deg, #d4af37, #f9e076);
           color:#1a2a6c; border:none; 
@@ -427,7 +423,7 @@
 
 <!-- Música -->
 <audio id="musica" loop>
-  <source src="assets/photograph.mp3" type="audio/mpeg">
+  <source src="assets/06 (mp3cut.net).mp3" type="audio/mpeg">
 </audio>
 
 <script>
