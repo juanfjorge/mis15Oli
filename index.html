@@ -228,10 +228,22 @@
     <div class="invitacion">
       <img src="assets/esquinaSUP.png" alt="decoración" class="decor-top">
       <h1 style="text-align:left; margin-left:20px; font-size: 3.2rem;">OLIVIA</h1>
-      <div class="titulo">
-          <img src="assets/deco.png" alt="decoración" class="decor" style="margin-left: -200px;">
-          <span class="cursive" style="font-size: 3rem;">Mis</span>
+      <div class="titulo" style="display:flex; align-items:center; justify-content:space-between;">
+          <img src="assets/deco.png" alt="decoración" class="decor">
+          <span class="cursive" style="font-size: 3rem; margin-left: -150px;">Mis</span>
+          <button id="boton-musica"
+          style="background: linear-gradient(90deg, #d4af37, #f9e076);
+          color:#1a2a6c; border:none; 
+          padding:15px 20px; border-radius:50%; 
+          font-size:1.2rem; font-weight:bold;
+          cursor:pointer; z-index:999;
+          box-shadow:0 4px 12px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;"">
+    🎵
+  </button>
+
         </div>
+        
         <span class="cursive" style="font-size: 3.8rem;">15</span>
         <div class="titulo" style="margin-right: -200px;">
           <span class="cursive" style="font-size: 3rem;">Años</span>
@@ -413,46 +425,29 @@
     </div>
   </section>
 
-  <!-- Música -->
-  <audio id="musica" autoplay loop muted>
-    <source src="assets/photograph.mp3" type="audio/mpeg">
-  </audio>
-  
-  <script>
+<!-- Música -->
+<audio id="musica" loop>
+  <source src="assets/photograph.mp3" type="audio/mpeg">
+</audio>
+
+<script>
   const musica = document.getElementById("musica");
-  musica.volume = 1;   // aseguramos volumen
-  musica.muted = false;
+  const boton = document.getElementById("boton-musica");
 
-  function activarMusica() {
-    musica.play().then(() => {
-      console.log("🎵 Música reproduciéndose");
-    }).catch(err => {
-      console.log("⛔ Autoplay bloqueado:", err);
-    });
+  let reproduciendo = false;
 
-    // quitamos los listeners después de activar
-    document.removeEventListener("click", activarMusica);
-    document.removeEventListener("touchstart", activarMusica);
-    document.removeEventListener("scroll", activarMusica);
-  }
+  boton.addEventListener("click", () => {
+    if (reproduciendo) {
+      musica.pause();
+      boton.textContent = "⏸"; // icono pausa
+    } else {
+      musica.play().catch(err => console.log("Autoplay bloqueado:", err));
+      boton.textContent = "🎵"; // icono play
+    }
+    reproduciendo = !reproduciendo;
+  });
+</script>
 
-  // se activa con cualquier interacción mínima
-  document.addEventListener("click", activarMusica);
-  document.addEventListener("touchstart", activarMusica);
-  document.addEventListener("scroll", activarMusica);
-
-  
-
-
-    function ajustarAltura() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-window.addEventListener('resize', ajustarAltura);
-ajustarAltura();
-
-
-  </script>
   
 </body>
 </html>
