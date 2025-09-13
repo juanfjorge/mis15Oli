@@ -83,7 +83,7 @@
     }
 
     .decor {
-      height: 50px;
+      height: 40px;
     }
     .flor{
       height: 300px;
@@ -182,36 +182,106 @@
   background: linear-gradient(90deg, #B8860B, #D4AF37); /* más oscuro al presionar */
   transform: scale(0.98); /* efecto de “hundido” */
 }
-/* Ajustes móviles generales */
+/* Ajustes generales para móviles */
 @media (max-width: 767px) {
-  section {
-    height: calc(var(--vh, 1vh) * 100);
-    min-height: calc(var(--vh, 1vh) * 100);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  .invitacion {
+    width: 95%;
+    min-height: 90vh;
+    max-height: 95vh;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 30px 15px; /* menos padding en móvil */
   }
 
-  .invitacion {
-    width: 95%;              /* ocupa casi todo el ancho */
-    min-height: 85vh;        /* altura mínima de la tarjeta */
-    max-height: 95vh;        /* altura máxima para no pasar la pantalla */
-    margin: 0 auto;          /* centrado horizontal */
-    border-radius: 12px;     /* bordes suaves */
-    box-shadow: none;
-    padding-top: 50px;       /* para que no quede espacio en blanco arriba */
-    position: relative;      /* para mantener la posición de las decoraciones */
+  h1 {
+    font-size: 1.6rem; /* más chico que en desktop */
+    margin-top: 20px;
+  }
+
+  .cursive {
+    font-size: 1.6rem;
+  }
+
+  .fecha {
+    font-size: 1rem;
+  }
+
+  .fecha .numero {
+    font-size: 2.2rem;
+  }
+
+  .ubicacion {
+    font-size: 0.8rem;
+  }
+
+  .pagina2 h2 {
+    font-size: 1.5rem;
+  }
+
+  .pagina2 p {
+    font-size: 1rem;
+  }
+
+  .faltan {
+    font-size: 1.6rem;
+  }
+
+  .contador {
+    font-size: 1rem;
+  }
+
+  /* imágenes decorativas más chicas */
+  .decor-top,
+  .decor-bottom {
+    width: 180px;
+  }
+
+  .flor {
+    height: 200px;
+  }
+
+  .ramas {
+    height: 90px;
+  }
+
+  .ramas2 {
+    height: 70px;
+  }
+
+  .ramas3 {
+    height: 140px;
+  }
+
+  /* botón más chico */
+  .boton-dorado {
+    padding: 15px 30px;
+    font-size: 1rem;
   }
 }
 
-/* Ajuste extra para móviles muy pequeños */
+/* Para móviles muy chicos (ej: iPhone SE) */
 @media (max-width: 480px) {
-  .invitacion {
-    min-height: 80vh;
-    max-height: 95vh;
-    padding-top: 40px;
-    width: 95%;
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .cursive {
+    font-size: 1.4rem;
+  }
+
+  .fecha .numero {
+    font-size: 1.8rem;
+  }
+
+  .boton-dorado {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+
+  .decor-top,
+  .decor-bottom {
+    width: 150px;
   }
 }
 
@@ -226,7 +296,7 @@
       <h1 style="text-align:left; margin-left:20px; font-size: 3.2rem;">OLIVIA</h1>
       <div class="titulo" style="display:flex; align-items:center; justify-content:space-between;">
           <img src="assets/deco.png" alt="decoración" class="decor">
-          <span class="cursive" style="font-size: 3rem; margin-left: -120px;">Mis</span>
+          <span class="cursive" style="font-size: 2.5rem; margin-left: -100px;">Mis</span>
           <button id="boton-musica"
           style="background: linear-gradient(90deg, #d4af37, #f9e076);
           color:#1a2a6c; border:none; 
@@ -240,9 +310,9 @@
 
         </div>
         
-        <span class="cursive" style="font-size: 3.8rem;">15</span>
+        <span class="cursive" style="font-size: 3.3rem;">15</span>
         <div class="titulo" style="margin-right: -200px;">
-          <span class="cursive" style="font-size: 3rem;">Años</span>
+          <span class="cursive" style="font-size: 2.5rem;">Años</span>
           <img src="assets/deco.png" alt="decoración" class="decor">
         </div>
       <div class="fecha">
@@ -398,7 +468,7 @@
       <img src="assets/esquinaSUP.png" alt="decoración" class="decor-top">
 
       <!-- Título -->
-      <h2 style="margin-top:180px; font-size:3rem; color:#b4975a; font-family:'Great Vibes', cursive;">
+      <h2 style="margin-top:120px; font-size:3rem; color:#b4975a; font-family:'Great Vibes', cursive;">
         Regalos
       </h2>
 
